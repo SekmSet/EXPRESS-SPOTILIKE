@@ -21,7 +21,9 @@ Copy / Paste `.env.example` and rename it into `.env`
 
 Set your variables
 
-> Back-end running on port 3000
+> **Back-end running on port 3000**
+
+> Front-end running on port 
 
 
 ## Spotlike API
