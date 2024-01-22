@@ -26,9 +26,9 @@ Set your variables
 > Front-end running on port 
 
 
-## Spotlike API
+## Spotlike Server
 
-### Launch API
+### Launch server
 
 ```bash
 npm i # Install packages
