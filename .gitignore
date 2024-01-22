@@ -3,6 +3,9 @@
 *.pdf
 */node_modules
 */.env
-course
+*.*.http
+*.http
+
+course/
 manipulate-file
 express
