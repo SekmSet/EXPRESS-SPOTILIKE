@@ -17,16 +17,19 @@ Master 1 - IL
 
 ## Configuration
 
+### Server
 Copy / Paste `.env.example` and rename it into `.env`
 
 Set your variables
+
+### Client
 
 > **Back-end running on port 3000**
 
 > Front-end running on port 
 
 
-## Spotlike Server
+## Spotilike Server
 
 ### Launch server
 
@@ -38,4 +41,4 @@ npm i # Install packages
 npm run start # Running on port 3000
 ```
 
-## Spotlike Client
+## Spotilike Client
