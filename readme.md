@@ -12,8 +12,8 @@ Master 1 - IL
 - Create an account or login to your account
 - Create a project
 
-![Spotify API acces to dashboard](spotilike/github/image/dashboard_access.png)
-![Spotify API create project](spotilike/github/image/create_project.png)
+![Spotify API acces to dashboard](github/image/dashboard_access.png)
+![Spotify API create project](github/image/create_project.png)
 
 ## Configuration
 
