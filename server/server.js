@@ -1,8 +1,12 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
+const { db } = require('./database');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 const port = process.env.PORT;
+
 app.use(express.json());
 
 app.listen(port, () => {
