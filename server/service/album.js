@@ -20,7 +20,7 @@ const get_by_id = async (id) => {
             album_type, artists, genres, href, label, name, release_date, total_tracks, type, tracks, copyrights, images
         };
     } catch (error) {
-        console.error('Erreur lors de la récupération des albums', error);
+        console.error('Erreur lors de la récupération des albums', error.response ? error.response.data : error.message);
     }
 }
 
