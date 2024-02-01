@@ -1,6 +1,6 @@
 
 // s'inscrire
-const {create_user, user_login} = require("../service/user");
+const {create_user, user_login, user_delete, user_update} = require("../service/user");
 const sign_up = async ({username, password, email}) => {
     return await create_user({username, password, email});
 }
@@ -10,11 +10,16 @@ const sign_in = async ({username, password}) => {
 }
 
 const delete_account = async (id) => {
-    // return await get_album_by_artist_id(id);
+    return await user_delete(id)
+}
+
+const update_account = async (id, {username, password, email}) => {
+    return await user_update(id, {username, password, email})
 }
 
 module.exports = {
     sign_up,
     sign_in,
-    delete_account
+    delete_account,
+    update_account,
 }

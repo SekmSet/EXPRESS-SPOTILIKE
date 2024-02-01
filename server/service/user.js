@@ -71,7 +71,62 @@ const user_login = async ({ username, password }) => {
   }
 };
 
+const user_delete = async (id) => {
+  try {
+    await db.query("DELETE FROM user WHERE id = ?", [id]);
+    return {
+      success: true,
+      message: "User successfully deleted",
+    };
+  } catch (error) {
+    console.error("Error during user delete:", error);
+    return {
+      success: false,
+      message: "Internal Server Error",
+    };
+  }
+};
+
+
+const user_update = async (id, { username, password, email }) => {
+  return new Promise((resolve, reject) => {
+    return db.query("SELECT * FROM user WHERE id = ?", [id], async (error, results) => {
+      if (error) {
+        console.error("Error during user update:", error);
+        return reject({
+          success: false,
+          message: "Internal Server Error",
+        });
+      }
+      if (results.length === 0) {
+        return reject({
+          success: false,
+          message: "User not found",
+        });
+      }
+
+      let hashedPassword = results[0].password;
+      if (password) {
+        hashedPassword = await hashPassword(password);
+      }
+
+      await db.query(
+          "UPDATE user SET username = ?, password = ?, email = ? WHERE id = ?",
+          [username || results[0].username, hashedPassword, email || results[0].email, id]
+      );
+
+      return resolve({
+        success: true,
+        message: "User successfully updated",
+      });
+    });
+  })
+};
+
+
 module.exports = {
   create_user,
   user_login,
+  user_delete,
+  user_update,
 };
