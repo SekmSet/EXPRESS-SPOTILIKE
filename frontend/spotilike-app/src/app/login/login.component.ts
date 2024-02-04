@@ -35,8 +35,7 @@ export class LoginComponent {
         this.router.navigate(['albums']);
       },
       (error) => {
-        console.error(error); // Handle login error
-        // Optionally, display an error message to the user
+        console.error(error);
       }
     );
   }
