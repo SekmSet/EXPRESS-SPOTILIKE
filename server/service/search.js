@@ -5,11 +5,11 @@ const searching = async (querry, type) => {
     try {
         const token = await generate_token();
 
-        querry = querry.replaceAll('=', ':');
-        let encoded = encodeURI(`${querry}&type=${type}`);
-        encoded = encoded.replaceAll(',', '%2C');
+        let end_url = `${querry}&${type}`
+        end_url = end_url.replaceAll(' ', '+');
+        end_url = end_url.replaceAll(',', '%2C');
 
-        const response = await axios.get(`${SPOTIFY_URL_SEARCH}${encoded}`, {
+        const response = await axios.get(`${SPOTIFY_URL_SEARCH}${end_url}`, {
             headers: {
                 'Authorization': `Bearer ${token.access_token}`
             }
