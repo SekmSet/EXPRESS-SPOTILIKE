@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+</head>
+
+<body>
+    <div>
+        <div class="search-bar">
+            <input type="text" placeholder="Enter an artist name or album name" [(ngModel)]="searchTerm" />
+            <select [(ngModel)]="selectedOption">
+                <option value="artist">Artist</option>
+                <option value="album">Album</option>
+            </select>
+            <button (click)="search()">Search</button>
+        </div>
+
+        <section class="search-results" *ngIf="showResults">
+            <article *ngFor="let item of items">
+                <div class="article-wrapper">
+                    <figure>
+                        <img [src]="item.images[1].url" alt="{{ item.name }}" />
+                    </figure>
+                    <div class="article-body">
+                        <h2>{{item.name }}</h2>
+                        <a [routerLink]="item.type === 'artist' ? '/artist-details/' + item.id : '/album-details/' + item.id">
+                            see details <span class="sr-only">about {{ item.name }}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+</body>
+
+</html>
