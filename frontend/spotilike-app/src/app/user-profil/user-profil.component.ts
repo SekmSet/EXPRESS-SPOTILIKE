@@ -39,15 +39,23 @@ export class UserProfilComponent {
 
   ngOnInit(): void {
     this.handleGetUserInfo();
+    this.reactiveUserForm.get('formUsername')?.disable();
+    this.reactiveUserForm.get('formEmail')?.disable();
+    this.reactiveUserForm.get('formPassword')?.disable();
   }
 
   updateProfil() {
     this.editMode = true;
+    this.reactiveUserForm.get('formUsername')?.enable();
+    this.reactiveUserForm.get('formEmail')?.enable();
+    this.reactiveUserForm.get('formPassword')?.enable();
   }
 
   cancelUpdateProfil() {
-
     this.editMode = false;
+    this.reactiveUserForm.get('formUsername')?.disable();
+    this.reactiveUserForm.get('formEmail')?.disable();
+    this.reactiveUserForm.get('formPassword')?.disable();
   }
 
   handleGetUserInfo() {
