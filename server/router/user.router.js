@@ -14,22 +14,20 @@ router.post("/sign", async (req, res) => {
 });
 
 router.post("/auth", async (req, res) => {
-  const { username, password } = req.body;
-  const response = await sign_in({ username, password });
+    const { username, password } = req.body;
+    const response = await sign_in({ username, password });
 
-  if (response.success) {
-    res.status(200).json({
-      message: "User is now login 💚",
-      result: response,
-      status: 200,
-    });
-  } else {
-    res.status(401).json({
-      message: "Authentication failed",
-      result: response,
-      status: 401,
-    });
-  }
+    if (response.success) {
+        res.status(200).json({
+            message: "User is now login 💚",
+            result: response,
+        });
+    } else {
+        res.status(401).json({
+            message: "Authentication failed",
+            result: response,
+        });
+    }
 });
 
 router.delete("/:id", async (req, res) => {
