@@ -7,5 +7,5 @@ module.exports = {
     SPOTIFY_URL,
     SPOTIFY_URL_ALBUM,
     SPOTIFY_URL_ARTIST,
-    SPOTIFY_URL_SEARCH
+    SPOTIFY_URL_SEARCH,
 }
