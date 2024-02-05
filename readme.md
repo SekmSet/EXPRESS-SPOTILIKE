@@ -16,8 +16,7 @@ NodeJS x Express x Angular
 [Spotify for developer](https://developer.spotify.com/)
 
 - Create an account or login to your account
-- Follow documentation [Request an access token](https://developer.spotify.com/documentation/web-api/tutorials/getting-started#request-an-access-token)
-- Create a project
+- Access to your Dashboard and create a project
 - Go to your setting project and get your client secret and client id  a project, you will need into your `.env`
 
 ![Spotify API access to dashboard](github/image/dashboard_access.png)
