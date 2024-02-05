@@ -67,7 +67,7 @@ ng serve # Running on port 4200
 
 ## API routes
 
-- Search _(album, artist)_
+- Search _(album, artist, track)_
 - Create account
 - Spotify 
   - Generate token
