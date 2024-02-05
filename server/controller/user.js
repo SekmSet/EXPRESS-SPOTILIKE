@@ -1,6 +1,7 @@
 
-// s'inscrire
 const {create_user, user_login, user_delete, user_update, get_info} = require("../service/user");
+
+// s'inscrire
 const sign_up = async ({username, password, email}) => {
     return await create_user({username, password, email});
 }
@@ -17,9 +18,7 @@ const update_account = async ({id, username, password, email}) => {
     return await user_update( {id, username, password, email})
 }
 
-const get_user_info = async () => {
-    const id = 2;
-
+const get_user_info = async (id) => {
     return await get_info(id)
 }
 
