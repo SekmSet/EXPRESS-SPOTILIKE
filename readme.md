@@ -77,16 +77,27 @@ ng serve # Running on port 4200
 
 ## Available API routes
 
+### GET
+
 - Search _(album, artist, track)_
-- Create account
-- Spotify 
-  - Generate token
-- Login
-- Delete Account
-- Update account
 - Album
   - /:id
   - /:id/tracks
 - Artist
   - /:id
   - /:id/tracks
+
+### POST
+
+- Create account
+- Login
+- Spotify
+  - Generate token
+
+### PUT
+
+- Update account
+
+### DELETE
+
+- Delete Account
