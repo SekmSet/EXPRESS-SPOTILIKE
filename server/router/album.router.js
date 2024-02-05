@@ -3,10 +3,12 @@ const router = express.Router()
 const {get_all_albums, get_album_by_id, get_album_tracks} = require("../controller/album");
 
 router.get('',async (req, res) => {
-    // const response = await get_all_albums();
+    const response = await get_all_albums();
+    console.log(response)
 
     res.json({
         "message": "ALL ALBUM : 💚",
+        "result": response,
         "status": 200
     })
 })
