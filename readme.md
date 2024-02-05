@@ -20,7 +20,9 @@ Master 1 - IL
 ### Server
 Copy / Paste `.env.example` and rename it into `.env`
 
-Set your variables
+Set your variables 
+
+Create your database and use the dump script to generate your database in SQL, `server/data/db/dump.sql`
 
 ### Client
 
@@ -30,6 +32,10 @@ Set your variables
 
 
 ## Spotilike Server
+
+```bash
+cd server
+``` 
 
 ### Launch server
 
@@ -42,3 +48,27 @@ npm run start # Running on port 3000
 ```
 
 ## Spotilike Client
+
+```bash
+cd frontend/spotilike-app
+``` 
+
+### Launch application
+
+```bash
+npm i # Install packages
+``` 
+
+```bash
+npm run start # Running on port 3000
+```
+
+## SQL diagram
+
+## API routes
+
+- Search _(album, artist)_
+- Create account
+- Login
+- Delete Account
+- Update account
