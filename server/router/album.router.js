@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router()
-const {get_all_albums, get_album_by_id, get_album_tracks} = require("../controller/album");
+const { get_album_by_id, get_album_tracks} = require("../controller/album");
 
 router.get('/:id',async (req, res) => {
     if (!req.headers.authorization) {
