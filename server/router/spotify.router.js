@@ -19,8 +19,7 @@ router.get('/token/refresh',async (req, res) => {
     const response = await get_refresh_token();
 
     res.json({
-        "message": "SPOTIFY API : FONCTIONNALITEE A FAIRE ",
-        // "message": "SPOTIFY API : Token successfully refreshed 💚",
+        "message": "SPOTIFY API : Token successfully refreshed 💚",
         "access_token": "",
         "token_type": "",
         "expires_in": "",

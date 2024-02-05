@@ -1,1 +1,22 @@
-<p>details-album works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="details">
+        <figure>
+            <img [src]="albumDetails.images[1].url" alt="{{ albumDetails.name }}" />
+        </figure>
+        <ul>
+            <li>Name : {{albumDetails.name}}</li>
+            <li>Label : {{albumDetails.label}}</li>
+            <li>Total tracks : {{albumDetails.total_tracks}}</li>
+            <li>Link to album -> <a href="{{albumDetails.uri}}"> album</a></li>
+            
+        </ul>
+    </div>
+</body>
+</html>
