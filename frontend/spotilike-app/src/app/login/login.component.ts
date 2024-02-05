@@ -31,8 +31,8 @@ export class LoginComponent {
   signIn(): void {
     this.authService.signIn({ username: this.username, password: this.password }).subscribe(
       (response) => {
-        console.log(response); 
-        this.router.navigate(['albums']);
+        localStorage.setItem("token", response.result.token)
+        this.router.navigate(['search']);
       },
       (error) => {
         console.error(error);
