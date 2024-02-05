@@ -87,8 +87,7 @@ const user_delete = async (id) => {
   }
 };
 
-
-const user_update = async (id, { username, password, email }) => {
+const user_update = async ({id,  username, password, email }) => {
   return new Promise((resolve, reject) => {
     return db.query("SELECT * FROM user WHERE id = ?", [id], async (error, results) => {
       if (error) {
@@ -123,10 +122,29 @@ const user_update = async (id, { username, password, email }) => {
   })
 };
 
+const get_info = async (id) => {
+  return db.query("SELECT * FROM user WHERE id = ?", [id], async (error, results) => {
+    if (error) {
+      console.error("Error during user update:", error);
+      return reject({
+        success: false,
+        message: "Internal Server Error",
+      });
+    }
+    if (results.length === 0) {
+      return reject({
+        success: false,
+        message: "User not found",
+      });
+    }
+  });
+
+}
 
 module.exports = {
   create_user,
   user_login,
   user_delete,
   user_update,
+  get_info
 };
