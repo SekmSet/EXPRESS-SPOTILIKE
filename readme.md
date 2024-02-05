@@ -85,6 +85,9 @@ ng serve # Running on port 4200
 - Artist
   - /:id
   - /:id/tracks
+- Genre
+- Tracks
+  - /:id
 
 ### POST
 
