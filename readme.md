@@ -34,7 +34,10 @@ Copy / Paste `.env.example` and rename it into `.env`
 
 Set your variables 
 
-Create your database and use the dump script to generate your database in SQL, `server/data/db/dump.sql`
+### Database 
+
+Create your database and run the script to generate your database in SQL console
+`server/data/db/dump.sql`
 
 ## 🚀 Launch Spotilike Server
 
