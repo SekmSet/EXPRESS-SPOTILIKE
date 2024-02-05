@@ -15,7 +15,9 @@ app.listen(port, () => {
 })
 
 app.use('/api/spotify', require('./router/spotify.router'))
-app.use('/api/album', require('./router/album.router'))
+app.use('/api/albums', require('./router/album.router'))
 app.use('/api/artist', require('./router/artist.router'))
 app.use('/api/user', require('./router/user.router'))
 app.use('/api/search', require('./router/search.router'))
+app.use('/api/genre', require('./router/genre.router'))
+app.use('/api/track', require('./router/track.router'))

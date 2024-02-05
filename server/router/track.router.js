@@ -1,8 +1,9 @@
 const express = require("express");
-const {spot_search} = require("../controller/search");
+const {get_track_by_id} = require("../controller/track");
 const router = express.Router()
 
-router.get('',async (req, res) => {
+
+router.get('/:id',async (req, res) => {
     if (!req.headers.authorization) {
         res.json({
             "message": "UNAUTHORIZED ACCESS",
@@ -10,17 +11,14 @@ router.get('',async (req, res) => {
         })
     }
 
-    const querry = req.query.q;
-    const type = req.query.type;
-
-    const response = await spot_search(querry, type);
+    const id = req.params.id
+    const response = await get_track_by_id(id);
 
     res.json({
-        "message": "",
+        "message": "Success getting TRACKS with ID 💚",
         "result": response,
         "status": 200
     })
 })
-
 
 module.exports = router

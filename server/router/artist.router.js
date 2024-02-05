@@ -2,17 +2,14 @@ const express = require("express");
 const {get_artist_by_id, get_artist_tracks} = require("../controller/artist");
 const router = express.Router()
 
-router.get('',async (req, res) => {
-    // const response = await get_all_albums();
-
-    res.json({
-        "message": "ALL ALBUM : 💚",
-        "status": 200
-    })
-})
-
-
 router.get('/:id',async (req, res) => {
+    if (!req.headers.authorization) {
+        res.json({
+            "message": "UNAUTHORIZED ACCESS",
+            "status": 404
+        })
+    }
+
     const id = req.params.id
     const response = await get_artist_by_id(id);
 
@@ -24,6 +21,13 @@ router.get('/:id',async (req, res) => {
 })
 
 router.get('/:id/tracks',async (req, res) => {
+    if (!req.headers.authorization) {
+        res.json({
+            "message": "UNAUTHORIZED ACCESS",
+            "status": 404
+        })
+    }
+
     const id = req.params.id
     const response = await get_artist_tracks(id);
 
