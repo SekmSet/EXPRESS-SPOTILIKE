@@ -1,0 +1,24 @@
+<div class="user-profil">
+  <button *ngIf="!editMode" (click)="updateProfil()">EDIT</button>
+  <button *ngIf="editMode" (click)="cancelUpdateProfil()">CANCEL EDITING</button>
+  <button (click)="deleteProfil()">DELETE</button>
+
+  <form [formGroup]="reactiveUserForm" (ngSubmit)="handleUpdate()">
+    <div>
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="formUsername" [value]="user.username">
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="formEmail" [value]="user.email">
+    </div>
+
+    <div *ngIf="editMode">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="formPassword">
+    </div>
+
+    <button *ngIf="editMode" type="submit" [disabled]="!reactiveUserForm.valid">VALIDATE</button>
+  </form>
+</div>
