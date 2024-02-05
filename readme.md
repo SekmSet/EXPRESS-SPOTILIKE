@@ -1,11 +1,17 @@
-# API SPOTILIKE
+# 🎧 API SPOTILIKE
 
 Master 1 - IL
 
 - Sharon
 - Priscilla
 
-## Spotify API
+___
+Create a custom API like Spotify
+___
+
+NodeJS x Express x Angular
+
+## 💚 Spotify API
 
 [Spotify for developer](https://developer.spotify.com/)
 
@@ -20,16 +26,17 @@ Master 1 - IL
 ![Spotify API access to the setting project](github/image/access_settings.png)
 ![Spotify API get your client ID and SERVER ](github/image/access_info.png)
 
-## Configuration
+## 🧰 Configuration
 
 ### Server
+
 Copy / Paste `.env.example` and rename it into `.env`
 
 Set your variables 
 
 Create your database and use the dump script to generate your database in SQL, `server/data/db/dump.sql`
 
-## Launch Spotilike Server
+## 🚀 Launch Spotilike Server
 
 _In a new terminal_
 
@@ -45,7 +52,7 @@ npm i # Install packages
 npm run start # Running on port 3000
 ```
 
-## Launch Spotilike Client
+## 🚀 Launch Spotilike Client
 
 _In a new terminal_
 
@@ -61,11 +68,11 @@ npm i # Install packages
 ng serve # Running on port 4200
 ```
 
-## SQL diagram
+## 💾 SQL diagram
 
 ![DB diagram](github/image/db_diagram.png)
 
-## API routes
+## Available API routes
 
 - Search _(album, artist, track)_
 - Create account
