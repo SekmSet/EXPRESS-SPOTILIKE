@@ -6,6 +6,6 @@ import {userAuthGuard} from "../guard/user-auth.guard";
 
 export const routes: Routes = [
 {path: '', component: LoginComponent},
-{path: 'albums',  component: ListAlbumsComponent, canActivate: [userAuthGuard]},
-{path: 'album-details', component: DetailsAlbumComponent, canActivate: [userAuthGuard] }
+{path: 'albums',  component: ListAlbumsComponent, canActivate: [userAuthGuard], redirectTo: '' },
+{path: 'album-details', component: DetailsAlbumComponent, canActivate: [userAuthGuard], redirectTo: '' }
 ];
