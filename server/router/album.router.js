@@ -2,20 +2,16 @@ const express = require("express");
 const router = express.Router()
 const {get_all_albums, get_album_by_id, get_album_tracks} = require("../controller/album");
 
-router.get('',async (req, res) => {
-    // const response = await get_all_albums();
-
-    res.json({
-        "message": "ALL ALBUM : 💚",
-        "status": 200
-    })
-})
-
-
 router.get('/:id',async (req, res) => {
+    if (!req.headers.authorization) {
+        res.json({
+            "message": "UNAUTHORIZED ACCESS",
+            "status": 404
+        })
+    }
+
     const id = req.params.id
     const response = await get_album_by_id(id);
-    console.log(response)
 
     res.json({
         "message": "Success getting ALBUM with ID 💚",
@@ -25,6 +21,13 @@ router.get('/:id',async (req, res) => {
 })
 
 router.get('/:id/tracks',async (req, res) => {
+    if (!req.headers.authorization) {
+        res.json({
+            "message": "UNAUTHORIZED ACCESS",
+            "status": 404
+        })
+    }
+
     const id = req.params.id
     const response = await get_album_tracks(id);
     res.json({

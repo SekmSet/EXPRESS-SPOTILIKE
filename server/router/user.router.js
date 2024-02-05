@@ -33,6 +33,13 @@ router.post("/auth", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
+  if (!req.headers.authorization) {
+    res.json({
+      "message": "UNAUTHORIZED ACCESS",
+      "status": 404
+    })
+  }
+
   const id = req.params.id;
   const response = await delete_account(id);
 
@@ -50,6 +57,13 @@ router.delete("/:id", async (req, res) => {
 });
 
 router.put("/:id", async (req, res) => {
+  if (!req.headers.authorization) {
+    res.json({
+      "message": "UNAUTHORIZED ACCESS",
+      "status": 404
+    })
+  }
+
   const id = req.params.id;
   const { username, password, email } = req.body;
   try {
