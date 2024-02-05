@@ -69,6 +69,14 @@ npm run start # Running on port 3000
 
 - Search _(album, artist)_
 - Create account
+- Spotify 
+  - Generate token
 - Login
 - Delete Account
 - Update account
+- album
+  - /:id
+  - /:id/tracks
+- artist
+  - /:id
+  - /:id/tracks
