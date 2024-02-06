@@ -46,6 +46,7 @@ export class LoginComponent {
         this.type = response.success ? "success" : "error";
       },
       (error) => {
+        console.log(error)
         this.errorOrResponse = error.error.message;
         this.statusCode = error.status;
         this.type = "error";

@@ -47,8 +47,8 @@ const user_login = async ({ username, password }) => {
       username,
     ], (error, result) => {
 
-      if (error) {
-        return reject({
+      if (result.length === 0) {
+        return resolve({
           success: false,
           message: "User not found",
         });

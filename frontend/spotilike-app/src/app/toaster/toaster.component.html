@@ -1,4 +1,4 @@
-<div class="toaster" [ngClass]="type == 'success' ? 'success' : 'error'">
+<div *ngIf="display" class="toaster" [ngClass]="type == 'success' ? 'success' : 'error'">
   [ERROR {{statusCode}}]
   <hr>
   <p>{{errorOrResponse}}</p>
