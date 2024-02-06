@@ -20,10 +20,10 @@ export class LoginComponent {
   signUp(): void {
     this.authService.signUp({ username: this.username, password: this.password, email: this.email }).subscribe(
       (response) => {
-        console.log(response); 
+        console.log(response);
       },
       (error) => {
-        console.error(error); 
+        console.error(error);
       }
     );
   }
@@ -32,11 +32,15 @@ export class LoginComponent {
     this.authService.signIn({ username: this.username, password: this.password }).subscribe(
       (response) => {
         localStorage.setItem("token", response.result.token)
-        this.router.navigate(['search']);
       },
       (error) => {
         console.error(error);
       }
     );
+
+    this.authService.generateSpotifyToken().subscribe(response => {
+      console.log(response)
+      this.router.navigate(['search']);
+    })
   }
 }

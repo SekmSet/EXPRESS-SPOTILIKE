@@ -1,6 +1,7 @@
 const { db, hashPassword } = require("../database");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const {set_token} = require("./spotify");
 
 const create_user = async ({ username, password, email }) => {
   try {
@@ -75,6 +76,8 @@ const generate_token = (id) => {
 const user_delete = async (id) => {
   try {
     await db.query("DELETE FROM user WHERE id = ?", [id]);
+    set_token("")
+
     return {
       success: true,
       message: "User successfully deleted",
