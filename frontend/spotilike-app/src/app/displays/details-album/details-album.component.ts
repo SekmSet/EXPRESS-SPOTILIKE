@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import { AuthService } from '../../auth.service';
-import {NgForOf} from "@angular/common";
+import {NgForOf, Location} from "@angular/common";
 @Component({
   selector: 'app-details-album',
   standalone: true,
@@ -16,7 +16,14 @@ export class DetailsAlbumComponent implements OnInit {
 albumDetails : any ;
 tracks : any ;
 
-constructor(private route: ActivatedRoute, private authService: AuthService) { }
+constructor(
+  private route: ActivatedRoute, 
+  private authService: AuthService,
+  private location: Location) { }
+
+goBack() {
+  this.location.back();
+}
 
 ngOnInit(): void {
   this.route.params.subscribe(params => {

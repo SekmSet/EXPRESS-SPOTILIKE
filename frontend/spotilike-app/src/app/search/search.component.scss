@@ -15,8 +15,7 @@ body {
 }
 
 input,
-select,
-button {
+select {
     width: 150%;
     height: 38px;
     margin: 10px auto;
@@ -30,9 +29,7 @@ button {
     transition: 0.2s ease-in;
 }
 
-select {
-    width: 60%;
-}
+
 
 button {
     width: 50%;

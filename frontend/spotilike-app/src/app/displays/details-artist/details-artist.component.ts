@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import { AuthService } from '../../auth.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 @Component({
   selector: 'app-details-artist',
   standalone: true,
@@ -14,8 +14,14 @@ artistDetails : any;
 genres:any[]=[];
 albums:any[]=[];
 
-constructor(private route: ActivatedRoute, private authService: AuthService) { }
+constructor(
+  private route: ActivatedRoute, 
+  private authService: AuthService,
+  private location: Location) { }
 
+goBack() {
+  this.location.back();
+}
 ngOnInit(): void {
   this.route.params.subscribe(params => {
       const artistId = params['id'];

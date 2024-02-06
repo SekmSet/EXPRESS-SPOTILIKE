@@ -11,11 +11,9 @@
       <figure>
         <img [src]="artistDetails?.images[1].url" alt="{{ artistDetails?.name }}" />
       </figure>
-      <ul>
-          <li>Genre : {{genres}}</li>
-          <li>Popularity : {{artistDetails?.popularity}}</li>
-          <li>Number of followers : {{artistDetails?.followers?.total}}</li>
-      </ul>
+          <p>Genre : {{genres}}</p>
+          <p>Popularity : {{artistDetails?.popularity}}</p>
+          <p>Number of followers : {{artistDetails?.followers?.total}}</p>
 
       <h1>ALBUMS</h1>
 

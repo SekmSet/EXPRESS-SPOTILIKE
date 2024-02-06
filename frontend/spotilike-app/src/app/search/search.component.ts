@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-
+import { RouterModule, ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-search',
   standalone: true,
@@ -18,7 +18,17 @@ export class SearchComponent {
   searchResults: any;
   items: any[] = [];
 
-  constructor(private authService: AuthService, private router: RouterModule) {}
+  constructor(
+    private authService: AuthService,
+    private router: RouterModule,
+    private route: ActivatedRoute,
+    private r: Router,
+    private location: Location
+  ) {}
+
+  goBack() {
+    this.location.back();
+  }
 
   search() {
     if (this.selectedOption === 'artist') {
@@ -48,5 +58,21 @@ export class SearchComponent {
           }
         );
     }
+
+    this.r.navigate([], {
+      relativeTo: this.route,
+      queryParams: { term: this.searchTerm, type: this.selectedOption },
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  ngOnInit() {
+    // Récupère les paramètres de l'URL
+    this.route.queryParams.subscribe((params) => {
+      this.searchTerm = params['term'] || '';
+      this.selectedOption = params['type'] || 'artist';
+
+      this.search();
+    });
   }
 }
