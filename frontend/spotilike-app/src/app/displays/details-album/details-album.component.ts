@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import { AuthService } from '../../auth.service';
 import {NgForOf} from "@angular/common";
 @Component({
   selector: 'app-details-album',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './details-album.component.html',
   styleUrl: './details-album.component.scss'

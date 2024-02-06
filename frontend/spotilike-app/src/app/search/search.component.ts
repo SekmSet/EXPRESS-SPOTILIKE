@@ -29,14 +29,11 @@ export class SearchComponent {
           (response) => {
             this.searchResults = response.result;
             this.items = this.searchResults.artists.items;
-            console.log(response.result);
-            console.log(response.result.artists.items);
           },
           (error) => {
             console.error(error);
           }
         );
-      console.log(`Searching for ${this.searchTerm} in ${this.selectedOption}`);
     } else {
       this.showResults = true;
       this.authService
@@ -45,15 +42,11 @@ export class SearchComponent {
           (response) => {
             this.searchResults = response.result;
             this.items = this.searchResults.albums.items;
-            console.log(response.result);
-            console.log(response.result.albums.items);
           },
           (error) => {
             console.error(error);
           }
         );
-      console.log(`Searching for ${this.searchTerm} in ${this.selectedOption}`);
-    } 
-    
+    }
   }
 }
