@@ -1,6 +1,7 @@
 const { db, hashPassword } = require("../database");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const {set_token} = require("./spotify");
 
 const create_user = async ({ username, email, password }) => {
 
@@ -50,7 +51,7 @@ const user_login = async ({ username, password }) => {
       if (result.length === 0) {
         return resolve({
           success: false,
-          message: "User not found",
+          message: "User not found 💔",
         });
       }
 
@@ -90,6 +91,8 @@ const generate_token = (id) => {
 const user_delete = async (id) => {
   try {
     await db.query("DELETE FROM user WHERE id = ?", [id]);
+    set_token("")
+
     return {
       success: true,
       message: "User successfully deleted",

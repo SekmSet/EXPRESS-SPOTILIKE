@@ -27,6 +27,7 @@ router.post("/sign", async (req, res) => {
 router.post("/auth", async (req, res) => {
     const { username, password } = req.body;
     const response = await sign_in({ username, password });
+
     if (response.success) {
         res.status(200).json({
           message: "User is now login 💚",

@@ -26,11 +26,17 @@ export class AuthService {
     return this.http.get(`${this.apiUrl}/albums`);
   }
 
+  generateSpotifyToken(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/spotify/token/generate`);
+  }
+
   searchItems(q: string, type: string): Observable<any> {
     const token = localStorage.getItem('token');
 
     const headers = token
-      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      ? new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      })
       : undefined;
 
     const url = `${this.apiUrl}/search?q=${q}&type=${type}`;
@@ -39,8 +45,11 @@ export class AuthService {
 
   getAlbumById(id: string): Observable<any> {
     const token = localStorage.getItem('token');
+
     const headers = token
-      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      ? new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      })
       : undefined;
 
     const url = `${this.apiUrl}/albums/${id}`;
@@ -49,8 +58,11 @@ export class AuthService {
 
   getAlbumTracks(id:string): Observable<any> {
     const token = localStorage.getItem('token');
+
     const headers = token
-      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      ? new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      })
       : undefined;
 
     const url = `${this.apiUrl}/albums/${id}/tracks`;
@@ -61,7 +73,9 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     const headers = token
-      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      ? new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      })
       : undefined;
 
     const url = `${this.apiUrl}/artist/${id}`;
@@ -72,7 +86,9 @@ export class AuthService {
     const token = localStorage.getItem('token');
 
     const headers = token
-      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      ? new HttpHeaders({
+        Authorization: `Bearer ${token}`,
+      })
       : undefined;
 
     const url = `${this.apiUrl}/artist/${id}/albums`;
