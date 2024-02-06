@@ -7,39 +7,38 @@
 </head>
 <body>
     <div class="details">
-     <h1>{{albumDetails?.name}}</h1>
+        <h1>{{albumDetails?.name}}</h1>
         <figure>
             <img [src]="albumDetails?.images[1].url" alt="{{ albumDetails?.name }}" />
         </figure>
 
         <ul class="artists">
-          <li *ngFor="let artist of albumDetails?.artists">
-            <a [routerLink]="'/artist-details/' + artist.id">
-              <h3>{{artist?.name}}</h3>
-            </a>
-          </li>
-        </ul>
-
-        <ul>
-            <li>Label : {{albumDetails?.label}}</li>
-            <li>Total tracks : {{albumDetails?.total_tracks}}</li>
-        </ul>
-
-      <div class="tracks">
-        <ul class="tracks-list">
-          <li *ngFor="let track of tracks">
-            <h2>{{track?.track_number}} - {{track?.name}}</h2>
-            <h3>Artists</h3>
-            <ul class="artists">
-              <li *ngFor="let artist of track?.artists">
+            <li *ngFor="let artist of albumDetails?.artists">
                 <a [routerLink]="'/artist-details/' + artist.id">
-                  <h3>{{artist?.name}}</h3>
+                    <h3>{{artist?.name}}</h3>
                 </a>
-              </li>
-            </ul>
-          </li>
+            </li>
         </ul>
-      </div>
+
+        <p>Label : {{albumDetails?.label}}</p>
+        <p>Total tracks : {{albumDetails?.total_tracks}}</p>
+
+
+        <div class="tracks">
+            <ul class="tracks-list">
+                <li *ngFor="let track of tracks">
+                    <h2>{{track?.track_number}} - {{track?.name}}</h2>
+                    <h3>Artists</h3>
+                    <ul class="artists">
+                        <li *ngFor="let artist of track?.artists">
+                            <a [routerLink]="'/artist-details/' + artist.id">
+                                <h3>{{artist?.name}}</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>
