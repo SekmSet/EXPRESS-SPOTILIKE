@@ -1,0 +1,25 @@
+.toaster.error {
+  top: 0;
+  border: solid 1px rgb(255, 99, 71);
+  border-radius: 25px;
+  background-color: rgba(255, 99, 71, 0.5);
+  margin: 2em;
+  padding: 2em;
+  display: block;
+  position: absolute;
+  color: #fff;
+  font-weight: 300;
+}
+
+.toaster.success {
+  top: 0;
+  border: solid 1px rgb(200, 247, 197);
+  border-radius: 25px;
+  background-color: rgba(200, 247, 197, 0.5);
+  margin: 2em;
+  padding: 2em;
+  display: block;
+  position: absolute;
+  color: #fff;
+  font-weight: 300;
+}

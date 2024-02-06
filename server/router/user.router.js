@@ -7,26 +7,38 @@ router.post("/sign", async (req, res) => {
   const { username, password, email } = req.body;
   const response = await sign_up({ username, password, email });
 
-  res.json({
-    message: "User successfully create 💚",
-    result: response,
-    status: 200,
-  });
+  if (response.success) {
+    res.json({
+      message: "User successfully create 💚",
+      result: response,
+      status: 200,
+      success: response.success
+    })
+  } else {
+    res.status(400).json({
+      message: response.message,
+      status: 400,
+      success: response.success
+    })
+  }
+
 });
 
 router.post("/auth", async (req, res) => {
     const { username, password } = req.body;
     const response = await sign_in({ username, password });
-
     if (response.success) {
         res.status(200).json({
-            message: "User is now login 💚",
-            result: response,
+          message: "User is now login 💚",
+          result: response,
+          status: 200,
+          success: response.success
         });
     } else {
         res.status(401).json({
-            message: "Authentication failed",
-            result: response,
+          message: response.message,
+          status: 401,
+          success: response.success
         });
     }
 });
@@ -76,7 +88,7 @@ router.put("/:id", async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: "Failed to update user",
+      message: "Failed to update user 💔",
       result: error,
       status: 500,
     });
@@ -106,7 +118,7 @@ router.get("/info", async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
-      message: "Failed to update user",
+        message: "Failed to get user information 💔",
       result: error,
       status: 500,
     });

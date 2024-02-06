@@ -32,4 +32,7 @@
     </div>
 </body>
 
+<div *ngIf="errorOrResponse">
+  <app-toaster [errorOrResponse]="errorOrResponse" [type]="type" [statusCode]="statusCode"></app-toaster>
+</div>
 </html>
