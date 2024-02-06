@@ -7,15 +7,32 @@
 </head>
 <body>
     <div class="details">
-        <figure>
-            <img [src]="artistDetails.images[1].url" alt="{{ artistDetails.name }}" />
-        </figure>
-        <ul>
-            <li>Name : {{artistDetails.name}}</li>
-            <li>Genre : {{genres}}</li>
-            <li>Popularity : {{artistDetails.popularity}}</li>
-            <li>Number of followers : {{artistDetails.followers.total}}</li> 
-        </ul>
+      <h1>{{artistDetails?.name}}</h1>
+      <figure>
+        <img [src]="artistDetails?.images[1].url" alt="{{ artistDetails?.name }}" />
+      </figure>
+      <ul>
+          <li>Genre : {{genres}}</li>
+          <li>Popularity : {{artistDetails?.popularity}}</li>
+          <li>Number of followers : {{artistDetails?.followers?.total}}</li>
+      </ul>
+
+      <h1>ALBUMS</h1>
+
+      <section class="search-results" *ngIf="albums">
+        <article *ngFor="let album of albums">
+          <div class="article-wrapper">
+            <a [routerLink]="'/album-details/' + album?.id"><h2>{{album.name }}</h2></a>
+            <figure>
+              <img [src]="album?.images[1].url" alt="IMAGE DE L ALBUM" />
+            </figure>
+            <div class="article-body">
+              <p>{{album?.release_date}}</p>
+              <p>Tracks : {{album?.total_tracks}}</p>
+            </div>
+          </div>
+        </article>
+      </section>
     </div>
 </body>
 </html>

@@ -20,7 +20,7 @@ router.get('/:id',async (req, res) => {
     })
 })
 
-router.get('/:id/tracks',async (req, res) => {
+router.get('/:id/albums',async (req, res) => {
     if (!req.headers.authorization) {
         res.json({
             "message": "UNAUTHORIZED ACCESS",

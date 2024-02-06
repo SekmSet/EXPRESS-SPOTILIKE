@@ -30,6 +30,7 @@ router.get('/:id/tracks',async (req, res) => {
 
     const id = req.params.id
     const response = await get_album_tracks(id);
+
     res.json({
         "message": "Success getting tracks of an ALBUM 💚",
         "result": response,
