@@ -22,7 +22,7 @@
       <section class="search-results" *ngIf="albums">
         <article *ngFor="let album of albums">
           <div class="article-wrapper">
-            <a [routerLink]="'/album-details/' + album?.id"><h2>{{album.name }}</h2></a>
+            <a [routerLink]="'/album-details/' + album?.id"><h2>{{album?.name }}</h2></a>
             <figure>
               <img [src]="album?.images[1].url" alt="IMAGE DE L ALBUM" />
             </figure>
