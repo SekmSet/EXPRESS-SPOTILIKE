@@ -23,7 +23,6 @@ ngOnInit(): void {
       const albumId = params['id'];
       this.authService.getAlbumById(albumId).subscribe(response => {
           this.albumDetails = response.result;
-          console.log(response.result)
       });
 
       this.authService.getAlbumTracks(albumId).subscribe(responseTrack => {

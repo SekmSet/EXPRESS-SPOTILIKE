@@ -19,7 +19,6 @@ export class ListAlbumsComponent implements OnInit {
     this.authService.getAlbums().subscribe(
       (response) => {
         this.albums = response.result.albums;
-        console.log(response.result);
       },
       (error) => {
         console.error('Error fetching albums:', error);
