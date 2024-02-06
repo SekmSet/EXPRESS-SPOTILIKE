@@ -30,6 +30,7 @@ const user_login = async ({ username, password }) => {
     return new Promise((resolve, reject) =>  db.query("SELECT * FROM user WHERE username = ?", [
       username,
     ], (error, result) => {
+
       if (error) {
         console.log("User not found for:", username);
         return reject({
@@ -38,7 +39,7 @@ const user_login = async ({ username, password }) => {
         });
       }
 
-      if (result) {
+      if (result.length > 0) {
         const match =  bcrypt.compare(password, result[0].password);
 
         if (match) {
