@@ -40,8 +40,12 @@ export class LoginComponent {
     this.authService.signIn({ username: this.username, password: this.password }).subscribe(
       (response) => {
         localStorage.setItem("token", response.result.token)
-        this.errorOrResponse = response;
-        this.type = response.success ? "success" : "error";
+
+        this.authService.generateSpotifyToken().subscribe(response => {
+          this.errorOrResponse = response;
+          this.type = response.success ? "success" : "error";
+          this.router.navigate(['search']);
+        })
       },
       (error) => {
         this.errorOrResponse = error.error.message;
@@ -49,10 +53,5 @@ export class LoginComponent {
         this.type = "error";
       }
     );
-
-    this.authService.generateSpotifyToken().subscribe(response => {
-      console.log(response)
-      this.router.navigate(['search']);
-    })
   }
 }
