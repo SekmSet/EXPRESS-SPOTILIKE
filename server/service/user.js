@@ -2,7 +2,15 @@ const { db, hashPassword } = require("../database");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const create_user = async ({ username, password, email }) => {
+const create_user = async ({ username, email, password }) => {
+
+  if (username.length === 0 || password.length === 0 || email.length === 0) {
+    return {
+      success: false,
+      message: "Username, email or password can't be null 💔",
+    };
+  }
+
   try {
     const hashedPassword = await hashPassword(password);
 
@@ -26,14 +34,21 @@ const create_user = async ({ username, password, email }) => {
 };
 
 const user_login = async ({ username, password }) => {
+
+  if (username.length === 0 || password.length === 0) {
+    return {
+      success: false,
+      message: "Username or password can't be null 💔",
+    };
+  }
+
   try {
     return new Promise((resolve, reject) =>  db.query("SELECT * FROM user WHERE username = ?", [
       username,
     ], (error, result) => {
 
-      if (error) {
-        console.log("User not found for:", username);
-        return reject({
+      if (result.length === 0) {
+        return resolve({
           success: false,
           message: "User not found",
         });
