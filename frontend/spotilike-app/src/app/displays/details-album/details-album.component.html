@@ -7,16 +7,35 @@
 </head>
 <body>
     <div class="details">
+      <h1>{{albumDetails?.name}}</h1>
         <figure>
-            <img [src]="albumDetails.images[1].url" alt="{{ albumDetails.name }}" />
+            <img [src]="albumDetails?.images[1].url" alt="{{ albumDetails?.name }}" />
         </figure>
-        <ul>
-            <li>Name : {{albumDetails.name}}</li>
-            <li>Label : {{albumDetails.label}}</li>
-            <li>Total tracks : {{albumDetails.total_tracks}}</li>
-            <li>Link to album -> <a href="{{albumDetails.uri}}"> album</a></li>
-            
+
+        <ul class="artists">
+          <li *ngFor="let artist of albumDetails?.artists">
+            <h3>{{artist?.name}}</h3>
+          </li>
         </ul>
+
+        <ul>
+            <li>Label : {{albumDetails?.label}}</li>
+            <li>Total tracks : {{albumDetails?.total_tracks}}</li>
+        </ul>
+
+      <div class="tracks">
+        <ul class="tracks-list">
+          <li *ngFor="let track of tracks">
+            <h2>{{track?.track_number}} - {{track?.name}}</h2>
+            <h3>Artists</h3>
+            <ul class="artists">
+              <li *ngFor="let artist of track?.artists">
+                <span>{{artist?.name}}</span>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
 </body>
 </html>

@@ -47,6 +47,16 @@ export class AuthService {
     return this.http.get(url, { headers });
   }
 
+  getAlbumTracks(id:string): Observable<any> {
+    const token = localStorage.getItem('token');
+    const headers = token
+      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      : undefined;
+
+    const url = `${this.apiUrl}/albums/${id}/tracks`;
+    return this.http.get(url, { headers });
+  }
+
   getArtistById(id: string): Observable<any> {
     const token = localStorage.getItem('token');
 
@@ -55,6 +65,18 @@ export class AuthService {
       : undefined;
 
     const url = `${this.apiUrl}/artist/${id}`;
+    return this.http.get(url, { headers });
+  }
+
+  getArtistAlbums(id:string): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    const headers = token
+      ? new HttpHeaders({ Authorization: `Bearer ${token}` })
+      : undefined;
+
+    const url = `${this.apiUrl}/artist/${id}/albums`;
+
     return this.http.get(url, { headers });
   }
 }

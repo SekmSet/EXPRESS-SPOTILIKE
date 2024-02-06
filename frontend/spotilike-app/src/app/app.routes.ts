@@ -12,7 +12,6 @@ export const routes: Routes = [
 {path: '', component: LoginComponent},
 {path: 'albums',  component: ListAlbumsComponent, canActivate: [userAuthGuard], redirectTo: '' },
 {path: 'search', component: SearchComponent,  canActivate: [userAuthGuard]},
-{path: 'album-details', component: DetailsAlbumComponent, canActivate: [userAuthGuard]},
 {path: 'album-details/:id', component: DetailsAlbumComponent, canActivate: [userAuthGuard]},
 {path: 'artist-details/:id', component: DetailsArtistComponent, canActivate: [userAuthGuard]},
 {path: 'user', component: UserProfilComponent, canActivate: [userAuthGuard]},
