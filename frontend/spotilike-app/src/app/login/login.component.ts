@@ -26,8 +26,10 @@ export class LoginComponent {
   signUp(): void {
     this.authService.signUp({ username: this.username, password: this.password, email: this.email }).subscribe(
       (response) => {
-        this.errorOrResponse = response;
-        this.type = response.success ? "success" : "error";      },
+        this.errorOrResponse = response.message;
+        this.statusCode = response.status;
+        this.type = response.success ? "success" : "error";
+        },
       (error) => {
         this.errorOrResponse = error.error.message;
         this.statusCode = error.status;

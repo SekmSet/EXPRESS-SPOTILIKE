@@ -3,9 +3,16 @@ const {SPOTIFY_URL_ALBUM} = require("./config.url");
 const {get_token} = require("./spotify");
 
 const get_by_id = async (id) => {
-    const token = get_token();
+    try {
+        const token = get_token();
 
-    try{
+        if (token == null) {
+            return {
+                message: "Spotify token is null 💔",
+                success: false
+            }
+        }
+
         const response = await axios.get(`${SPOTIFY_URL_ALBUM}/${id}`, {
             headers: {
                 'Authorization': token
@@ -23,9 +30,16 @@ const get_by_id = async (id) => {
 }
 
 const get_tracks_by_album_id = async (id) => {
-    const token = get_token();
+    try {
+        const token = get_token();
 
-    try{
+        if (token == null) {
+            return {
+                message: "Spotify token is null 💔",
+                success: false
+            }
+        }
+
         const response = await axios.get(`${SPOTIFY_URL_ALBUM}/${id}/tracks`, {
             headers: {
                 'Authorization': token
@@ -38,7 +52,8 @@ const get_tracks_by_album_id = async (id) => {
             message: "Erreur lors de la récupération des tracks de l'album",
             error,
             success: false
-        }    }
+        }
+    }
 }
 
 module.exports = {

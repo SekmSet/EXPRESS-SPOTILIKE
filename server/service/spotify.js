@@ -45,7 +45,11 @@ const set_token = (token) => {
 }
 
 const get_token = () => {
-    return TOKEN;
+    if (TOKEN.length > 0)
+    {
+        return TOKEN;
+    }
+    return null;
 }
 
 module.exports = {

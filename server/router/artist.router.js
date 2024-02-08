@@ -1,15 +1,9 @@
 const express = require("express");
 const {get_artist_by_id, get_artist_tracks} = require("../controller/artist");
+const {is_auth} = require("../middleware/auth");
 const router = express.Router()
 
-router.get('/:id',async (req, res) => {
-    if (!req.headers.authorization) {
-        res.json({
-            "message": "UNAUTHORIZED ACCESS",
-            "status": 404
-        })
-    }
-
+router.get('/:id',is_auth, async (req, res) => {
     const id = req.params.id
     const response = await get_artist_by_id(id);
 
@@ -20,14 +14,7 @@ router.get('/:id',async (req, res) => {
     })
 })
 
-router.get('/:id/albums',async (req, res) => {
-    if (!req.headers.authorization) {
-        res.json({
-            "message": "UNAUTHORIZED ACCESS",
-            "status": 404
-        })
-    }
-
+router.get('/:id/albums', is_auth, async (req, res) => {
     const id = req.params.id
     const response = await get_artist_tracks(id);
 

@@ -3,9 +3,16 @@ const {SPOTIFY_URL_ARTIST} = require("./config.url");
 const {get_token} = require("./spotify");
 
 const get_by_id = async (id) => {
-    const token = get_token();
+    try {
+        const token = get_token();
 
-    try{
+        if (token == null) {
+            return {
+                message: "Spotify token is null 💔",
+                success: false
+            }
+        }
+
         const response = await axios.get(`${SPOTIFY_URL_ARTIST}/${id}`, {
             headers: {
                 'Authorization': token
@@ -24,9 +31,16 @@ const get_by_id = async (id) => {
 
 
 const get_album_by_artist_id = async (id) => {
-    const token = get_token();
+    try {
+        const token = get_token();
 
-    try{
+        if (token == null) {
+            return {
+                message: "Spotify token is null 💔",
+                success: false
+            }
+        }
+
         const response = await axios.get(`${SPOTIFY_URL_ARTIST}/${id}/albums`, {
             headers: {
                 'Authorization': token

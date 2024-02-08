@@ -78,6 +78,7 @@ export class UserProfilComponent {
       this.user.id = response.result?.results[0].id
     });
 
+    this.cancelUpdateProfil()
     this.handleGetUserInfo()
   }
 

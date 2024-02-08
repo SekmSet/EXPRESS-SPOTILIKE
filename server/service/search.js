@@ -6,6 +6,13 @@ const searching = async (querry, type) => {
     try {
         const token = get_token();
 
+        if (token == null) {
+            return {
+                message: "Spotify token is null 💔",
+                success: false
+            }
+        }
+
         querry = querry.replaceAll('=', ':');
         let encoded = encodeURI(`${querry}&type=${type}`);
         encoded = encoded.replaceAll(',', '%2C');

@@ -3,9 +3,16 @@ const axios = require("axios");
 const {SPOTIFY_URL_GENRE} = require("./config.url");
 
 const get_genre = async () => {
-  const token = get_token();
+  try {
+    const token = get_token();
 
-  try{
+    if (token == null) {
+      return {
+        message: "Spotify token is null 💔",
+        success: false
+      }
+    }
+
     const response = await axios.get(`${SPOTIFY_URL_GENRE}`, {
       headers: {
         'Authorization': token
