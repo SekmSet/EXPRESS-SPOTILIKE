@@ -1,6 +1,7 @@
 const express = require("express");
 const { sign_up, sign_in, delete_account, update_account, get_user_info} = require("../controller/user");
 const jwt = require("jsonwebtoken");
+const {is_auth} = require("../middleware/auth");
 const router = express.Router();
 
 router.post("/sign", async (req, res) => {
@@ -44,14 +45,7 @@ router.post("/auth", async (req, res) => {
     }
 });
 
-router.delete("/:id", async (req, res) => {
-  if (!req.headers.authorization) {
-    res.json({
-      "message": "UNAUTHORIZED ACCESS",
-      "status": 404
-    })
-  }
-
+router.delete("/:id", is_auth, async (req, res) => {
   const id = req.params.id;
   const response = await delete_account(id);
 
@@ -68,14 +62,7 @@ router.delete("/:id", async (req, res) => {
   });
 });
 
-router.put("/:id", async (req, res) => {
-  if (!req.headers.authorization) {
-    res.json({
-      "message": "UNAUTHORIZED ACCESS",
-      "status": 404
-    })
-  }
-
+router.put("/:id", is_auth, async (req, res) => {
   const id = req.params.id;
   const { username, password, email } = req.body;
 
@@ -96,20 +83,12 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.get("/info", async (req, res) => {
-  let token = req.headers.authorization;
-
-  if (!token) {
-    res.json({
-      "message": "UNAUTHORIZED ACCESS",
-      "status": 404
-    })
-  }
-
-  token = token.replace("Bearer ", "")
-  let payload = jwt.verify(token, process.env.JWT_SECRET);
-
+router.get("/info", is_auth, async (req, res) => {
   try {
+    let token = req.headers.authorization;
+    token = token.replace("Bearer ", "")
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+
     const response = await get_user_info(payload.id);
 
     res.status(200).json({
