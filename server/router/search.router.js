@@ -1,15 +1,9 @@
 const express = require("express");
 const {spot_search} = require("../controller/search");
+const {is_auth} = require("../middleware/auth");
 const router = express.Router()
 
-router.get('',async (req, res) => {
-    if (!req.headers.authorization) {
-        res.json({
-            "message": "UNAUTHORIZED ACCESS",
-            "status": 404
-        })
-    }
-
+router.get('', is_auth, async (req, res) => {
     const querry = req.query.q;
     const type = req.query.type;
 
