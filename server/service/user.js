@@ -26,7 +26,6 @@ const create_user = async ({ username, email, password }) => {
       userId: result.id,
     };
   } catch (error) {
-    console.error("Error during user creation:", error);
     return {
       success: false,
       message: "Internal Server Error",
